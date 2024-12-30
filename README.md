@@ -1,75 +1,90 @@
-# Nuxt UI v3 Starter
+# Portfolio Website (v3)
 
-Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui3.nuxt.dev) to learn more.
+Welcome to my portfolio website built with **Nuxt 3** and **UI v3**. This project is part of my journey to learn and explore modern web development. It showcases my progress, skills, and projects in a clean and responsive design.
 
-## Setup
+## 🚀 Features
 
-Make sure to install the dependencies:
+- **Modern Design**: Built with a clean and minimalistic UI.
+- **Responsive Layout**: Fully responsive design for all screen sizes.
+- **Dark Mode**: Supports light and dark mode for better user experience.
+- **Typing Animation**: Uses **Typed.js** for dynamic text animations.
+- **Icons**: Utilizes **Lucide Icons** for a sleek and consistent icon set.
+- **Custom Components**: Reusable and modular components for easy maintenance.
+
+## 🛠️ Technologies Used
+
+- **[Nuxt 3](https://nuxt.com/)**: The intuitive Vue framework for building modern web applications.
+- **[UI v3](https://ui.nuxt.com/)**: A powerful UI library for Nuxt 3 with pre-built components.
+- **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework for rapid UI development.
+- **[Typed.js](https://github.com/mattboldt/typed.js/)**: A JavaScript library for typing animations.
+- **[Lucide Icons](https://lucide.dev/)**: A beautiful and consistent icon library.
+- **[Vite](https://vitejs.dev/)**: Next-generation frontend tooling for fast development.
+
+## 📦 Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/atefalvi/v3pf.git
+   ```
+
+2. Navigate to the project directory:
 
 ```bash
-# npm
+cd v3pf
+```
+
+3. Install dependencies:
+
+```bash
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+4. Start the development server:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+5. Open your browser and visit:
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+```
+http://localhost:3000
 ```
 
-Locally preview production build:
+## 🎨 Components
 
-```bash
-# npm
-npm run preview
+Navbar
 
-# pnpm
-pnpm run preview
+- Logo: Displays the site logo and brand name.
+- Navigation Menu: Includes links to Home, Blog, Services, and Contact.
+- Theme Switch: Toggles between light and dark mode.
+- Mobile Menu: Responsive menu for smaller screens.
 
-# yarn
-yarn preview
+Footer
 
-# bun
-bun run preview
-```
+- Copyright Text: Displays the current year and rights reserved.
+- Social Links: Links to GitHub and LinkedIn with icons.
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Typing Animation
+
+- Typed.js: Used for dynamic text animations in the hero section.
+
+Icons
+
+- Lucide Icons: Used for social links, theme switch, and mobile menu.
+
+📄 License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+🙏 Acknowledgments
+
+- **[Nuxt Team](https://nuxt.com/)**: For creating an amazing framework.
+- **[Tailwind CSS](https://tailwindcss.com/)**: For making styling so much easier.
+- **[Typed.js](https://github.com/mattboldt/typed.js/)**: For the awesome typing animations.
+- **[Lucide Icons](https://lucide.dev/)**: For the beautiful icons.
+- **[Anthony Fu](https://antfu.me)**: For his incredible contributions to the open-source community.
+
+---
+
+Made with ❤️ by [Atef Alvi](https://github.com/atefalvi)
