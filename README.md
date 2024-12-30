@@ -17,7 +17,13 @@ Welcome to my portfolio website built with **Nuxt 3** and **UI v3**. This projec
 - **[UI v3](https://ui.nuxt.com/)**: A powerful UI library for Nuxt 3 with pre-built components.
 - **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework for rapid UI development.
 - **[Typed.js](https://github.com/mattboldt/typed.js/)**: A JavaScript library for typing animations.
-- **[Lucide Icons](https://lucide.dev/)**: A beautiful and consistent icon library.
+- **[Iconify](https://iconify.design/)**: A unified icon framework with support for multiple icon sets.
+  - **[Devicon](https://devicon.dev/)**: Icons for programming languages and tools.
+  - **[Heroicons](https://heroicons.com/)**: Beautiful hand-crafted SVG icons.
+  - **[Line MD](https://github.com/cyberalien/line-md)**: Material design icons in line style.
+  - **[Logos](https://github.com/iconify/icon-sets/tree/master/json/logos)**: Logos of popular brands and technologies.
+  - **[Simple Icons](https://simpleicons.org/)**: SVG icons for popular brands.
+  - **[VSCode Icons](https://github.com/microsoft/vscode-icons)**: Icons used in Visual Studio Code.
 - **[Vite](https://vitejs.dev/)**: Next-generation frontend tooling for fast development.
 
 ## 📦 Installation
