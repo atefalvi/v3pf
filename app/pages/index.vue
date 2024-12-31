@@ -48,13 +48,13 @@ const items = [
   </main>
 
   <!-- About Me -->
-  <section class="py-12 bg-slate-200 dark:bg-gray-800">
+  <section class="py-5 bg-slate-200 dark:bg-gray-800">
     <UContainer>
       <div class="mx-auto text-justify">
-        <h2 class="text-4xl font-bold text-slate-900 dark:text-white mb-8">
+        <h2 class="text-4xl font-bold text-slate-900 dark:text-white mb-5">
           About Me
         </h2>
-        <div class="space-y-6 text-slate-600 dark:text-slate-300 text-lg">
+        <div class="space-y-2 text-slate-600 dark:text-slate-300 text-lg">
           <p>
             I’m Atef, a dedicated and results-driven data professional with a
             passion for solving complex problems and creating meaningful impact
@@ -70,7 +70,7 @@ const items = [
         </div>
 
         <!-- Fun Fact Alert -->
-        <div class="mt-10">
+        <div class="mt-5">
           <UAlert
             icon="line-md:chat"
             color="primary"
@@ -85,7 +85,7 @@ const items = [
   </section>
 
   <!-- How I Work -->
-  <section class="py-12 bg-slate-300 dark:bg-slate-900">
+  <section class="py-5 bg-slate-300 dark:bg-slate-900">
     <UContainer>
       <h2
         class="text-4xl font-bold text-slate-900 dark:text-white mb-8 text-left"
@@ -99,7 +99,7 @@ const items = [
           a deep understanding of business needs to empower impactful decisions.
         </p>
       </div>
-      <UAccordion multiple :items="items" class="py-6">
+      <UAccordion type="multiple" :items="items" class="py-6">
         <template #engineer>
           <div class="text-gray-900 dark:text-white text-left">
             <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
@@ -107,7 +107,7 @@ const items = [
               integration, efficient data flow, and robust performance.
             </p>
             <ul
-              class="list-disc list-inside mt-4 text-sm text-gray-500 dark:text-gray-400"
+              class="list-disc list-inside mt-2 text-sm text-gray-500 dark:text-gray-400"
             >
               <li>
                 Develop end-to-end pipelines tailored for reliability and
@@ -133,6 +133,7 @@ const items = [
               <Icon name="simple-icons:minio" class="w-6 h-6" />
               <Icon name="logos:docker-icon" class="w-6 h-6" />
               <Icon name="logos:kubernetes" class="w-6 h-6" />
+              <Icon name="logos:github-icon" class="w-6 h-6" />
             </div>
           </div>
         </template>
@@ -145,7 +146,7 @@ const items = [
               decisions.
             </p>
             <ul
-              class="list-disc list-inside mt-4 text-sm text-gray-500 dark:text-gray-400"
+              class="list-disc list-inside mt-2 text-sm text-gray-500 dark:text-gray-400"
             >
               <li>
                 Build predictive models to anticipate trends and inform
@@ -183,7 +184,7 @@ const items = [
               act with confidence.
             </p>
             <ul
-              class="list-disc list-inside mt-4 text-sm text-gray-500 dark:text-gray-400"
+              class="list-disc list-inside mt-2 text-sm text-gray-500 dark:text-gray-400"
             >
               <li>
                 Design dashboards that simplify decision-making processes.

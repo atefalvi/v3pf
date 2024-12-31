@@ -13,9 +13,14 @@
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.16",
+    "@nuxt/content": "^2.13.4",
     "@nuxt/image": "^1.8.1",
     "@nuxt/ui": "3.0.0-alpha.9",
+    "@tailwindcss/typography": "^0.5.15",
     "nuxt": "^3.14.1592",
+    "rehype-katex": "^7.0.1",
+    "remark-gfm": "^4.0.0",
+    "remark-math": "^6.0.0",
     "typed.js": "^2.1.0"
   },
   "devDependencies": {
