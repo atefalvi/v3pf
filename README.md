@@ -36,54 +36,55 @@ Welcome to my portfolio website built with **Nuxt 3** and **UI v3**. This projec
 
 2. Navigate to the project directory:
 
-```bash
-cd v3pf
-```
+   ```bash
+   cd v3pf
+   ```
 
 3. Install dependencies:
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 4. Start the development server:
 
-```bash
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
 
 5. Open your browser and visit:
 
-```
-http://localhost:3000
-```
+   ```
+   http://localhost:3000
+   ```
 
 ## 🎨 Components
 
-Navbar
+### Navbar
 
 - Logo: Displays the site logo and brand name.
 - Navigation Menu: Includes links to Home, Blog, Services, and Contact.
 - Theme Switch: Toggles between light and dark mode.
 - Mobile Menu: Responsive menu for smaller screens.
 
-Footer
+### Footer
 
 - Copyright Text: Displays the current year and rights reserved.
 - Social Links: Links to GitHub and LinkedIn with icons.
 
-Typing Animation
+### Typing Animation
 
 - Typed.js: Used for dynamic text animations in the hero section.
 
-Icons
+### Icons
 
-- Lucide Icons: Used for social links, theme switch, and mobile menu.
+- Used for social links, theme switch, and mobile menu with icons from Devicon, Heroicons, Line MD, Logos, Simple Icons, and VSCode Icons.
 
-📄 License
+## 📄 License
+
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-🙏 Acknowledgments
+## 🙏 Acknowledgments
 
 - **[Nuxt Team](https://nuxt.com/)**: For creating an amazing framework.
 - **[Tailwind CSS](https://tailwindcss.com/)**: For making styling so much easier.
@@ -93,4 +94,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-Made with ❤️ by [Atef Alvi](https://github.com/atefalvi)
+Made with ❤️ by [Atef Alvi] (https://www.linkedin.com/in/atefsyed/)
