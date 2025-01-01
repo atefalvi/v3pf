@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from "vue";
 import Typed from "typed.js";
 
@@ -18,9 +18,11 @@ const typedElement = ref(null);
 const currentColor = ref("");
 
 const roles = [
-  { text: "Data Analyst", color: "#b37a10" },
-  { text: "Business Analyst", color: "#8d10b3" },
-  { text: "Data Engineer", color: "#0d870b" },
+  { text: "Data Analyst", color: "#F59E0B" }, // Amber Gold (Triadic with Green)
+  { text: "Business Analyst", color: "#0EA5E9" }, // Sky Blue (Triadic with Green)
+  { text: "Data Engineer", color: "#10B981" }, // Green (Primary Accent)
+  { text: "Process Doctor", color: "#E11D48" }, // Crimson Red (Complementary to Green)
+  { text: "Lifelong Learner", color: "#9333EA" }, // Deep Purple (Contrasting for richness)
 ];
 
 onMounted(() => {
@@ -33,8 +35,6 @@ onMounted(() => {
       currentColor.value = roles[arrayPos].color;
     },
   });
-
-  console.log("Typed.js initialized"); // Debugging log
 });
 </script>
 

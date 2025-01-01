@@ -2,6 +2,8 @@
 title: Getting Started with Nuxt Content
 description: A beginner's guide to using Nuxt Content for managing Markdown and other content types.
 image: /image/postcover.png
+author: Syed Atef Alvi
+avatar: /profile.jpeg
 date: 2023-10-01
 tags:
   - nuxt

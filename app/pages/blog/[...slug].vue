@@ -12,37 +12,44 @@
           backgroundPosition: 'center',
         }"
       >
-        <!-- Overlay for better text contrast -->
-        <div class="absolute inset-0 bg-black/40"></div>
+        <!-- Gradient Overlay from Bottom to Top -->
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"
+        ></div>
 
         <!-- Blog Title -->
         <h1
-          class="relative z-10 text-5xl lg:text-6xl font-bold text-white drop-shadow-lg tracking-wide mb-4"
+          class="relative z-10 text-5xl lg:text-6xl font-bold text-white drop-shadow-lg tracking-wide mb-6"
         >
           {{ data.title }}
         </h1>
 
-        <!-- Metadata (Date and Tags) -->
-        <div class="space-y-2 relative z-10 text-gray-200">
-          <!-- Published Date -->
-          <div class="flex items-center gap-3">
-            <UIcon name="i-heroicons-calendar" class="w-5 h-5 text-white" />
-            <span>{{ formatDate(data.date) }}</span>
-          </div>
+        <!-- Author Info and Date -->
+        <div class="relative z-10 flex items-center gap-4 mb-4">
+          <!-- Avatar -->
+          <img
+            v-if="data.avatar"
+            :src="data.avatar"
+            alt="Author's Avatar"
+            class="w-12 h-12 rounded-full object-cover border border-primary-400 shadow-md"
+          />
 
-          <!-- Tags -->
-          <div class="flex items-center gap-3">
-            <UIcon name="i-heroicons-tag" class="w-5 h-5 text-white" />
-            <div class="flex gap-2 flex-wrap">
-              <span
-                v-for="tag in data.tags"
-                :key="tag"
-                class="bg-primary-500/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium hover:bg-primary-500/30 transition-all duration-150"
-              >
-                {{ tag }}
-              </span>
-            </div>
+          <!-- Author Name and Date -->
+          <div>
+            <p class="text-sm font-medium text-white">{{ data.author }}</p>
+            <p class="text-xs text-gray-300">{{ formatDate(data.date) }}</p>
           </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="relative z-10 flex flex-wrap gap-2">
+          <span
+            v-for="tag in data.tags"
+            :key="tag"
+            class="bg-primary-500/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium border border-primary-400 hover:bg-primary-400/30 hover:border-primary-300 transition-all duration-200"
+          >
+            {{ tag }}
+          </span>
         </div>
       </div>
 
@@ -59,7 +66,6 @@ const route = useRoute();
 const { data } = await useAsyncData(`content-${route.path}`, () =>
   queryContent().where({ _path: route.path }).findOne()
 );
-console.log(data.value);
 
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -77,21 +83,21 @@ const formatDate = (dateString: string) => {
   font-size: 2.25rem; /* Equivalent to text-4xl */
   font-weight: 700; /* Bold */
   margin-bottom: 1rem; /* Equivalent to mb-4 */
-  color: #007b83; /* Primary-500 */
+  color: #059669; /* Green-600 (Primary) */
 }
 
 .prose h2 {
   font-size: 1.875rem; /* Equivalent to text-3xl */
   font-weight: 700; /* Bold */
   margin-bottom: 1rem; /* Equivalent to mb-4 */
-  color: #00a0a8; /* Primary-400 */
+  color: #10b981; /* Green-500 (Primary) */
 }
 
 .prose h3 {
   font-size: 1.5rem; /* Equivalent to text-2xl */
   font-weight: 700; /* Bold */
   margin-bottom: 1rem; /* Equivalent to mb-4 */
-  color: #005960; /* Primary-300 */
+  color: #34d399; /* Green-400 (Primary) */
 }
 
 /* Light mode styles for code blocks */
@@ -120,13 +126,11 @@ const formatDate = (dateString: string) => {
   background-color: #e5e7eb; /* Equivalent to bg-gray-200 */
   padding: 0.2em 0.4em; /* Small padding for inline code */
   border-radius: 4px; /* Rounded corners */
-  color: #d946ef; /* Purple text */
 }
 
 /* Dark mode styles for inline code */
 .dark .prose code:not(pre code) {
   background-color: #374151; /* Equivalent to bg-gray-700 */
-  color: #f472b6; /* Pink text */
 }
 
 /* Table styles */
@@ -134,22 +138,36 @@ const formatDate = (dateString: string) => {
   width: 100%;
   border-collapse: collapse; /* No spacing between borders */
   margin: 1rem 0; /* Equivalent to my-4 */
+  background-color: #f9fafb; /* Neutral-50 (Light background) */
+  border: 1px solid #d1d5db; /* Neutral-300 (Border) */
 }
 
 .prose th,
 .prose td {
-  border: 1px solid #5077c5; /* Custom border color */
+  border: 1px solid #d1d5db; /* Neutral-300 (Border color) */
   padding: 0.5rem; /* Equivalent to p-2 */
   text-align: left; /* Left-align text */
+  color: #374151; /* Neutral-700 (Text color) */
 }
 
 .prose th {
-  background-color: #5e82c8; /* Header background */
-  color: #ffffff; /* White text */
+  background-color: #d1fae5; /* Green-100 (Header background) */
+  color: #065f46; /* Green-700 (Text color) */
 }
 
 .dark .prose th {
-  background-color: #344a77; /* Dark mode header background */
+  background-color: #064e3b; /* Green-900 (Dark mode header background) */
+  color: #d1fae5; /* Green-100 (Text color in dark mode) */
+  border-color: #4a525f;
+}
+
+.dark .prose table {
+  background-color: #1f2937; /* Neutral-800 (Dark background) */
+}
+
+.dark .prose td {
+  color: #d1d5db; /* Neutral-300 (Light text in dark mode) */
+  border-color: #4a525f; /* Neutral-700 (Border color in dark mode) */
 }
 
 /* Unordered list styles */

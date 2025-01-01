@@ -1,47 +1,32 @@
 <template>
-  <UContainer class="bg-slate-600 py-4 mx-auto max-w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between">
-        <!-- Logo and Brand Name -->
-        <div class="flex items-center space-x-2">
-          <NuxtImg src="/logo4.png" alt="Company Logo" width="32" height="32" />
-          <span class="text-3xl font-semibold">Atef.</span>
-        </div>
-
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-6">
-          <UNavigationMenu
-            :items="navItems"
-            class="justify-center"
-            variant="pill"
-            highlight
-            active-class="text-sky-400"
-          />
-          <USwitch
-            v-model="switchValue"
-            :unchecked-icon="'i-lucide-moon'"
-            :checked-icon="'i-lucide-sun'"
-            size="xl"
-            color="warning"
-          />
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <UButton @click="toggleMobileMenu" class="md:hidden" color="netural">
-          <Icon v-if="!isMobileMenuOpen" name="i-lucide-menu" size="24" />
-          <Icon v-else name="i-lucide-minimize-2" size="24" />
-        </UButton>
+  <UContainer
+    class="sticky top-0 z-10 bg-neutral-50/70 dark:bg-neutral-800/70 backdrop-blur-lg py-4 shadow-md max-w-full"
+  >
+    <div
+      class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8"
+    >
+      <!-- Logo and Brand Name -->
+      <div class="flex items-center space-x-2">
+        <NuxtImg
+          src="/logo4.png"
+          alt="Company Logo"
+          width="32"
+          height="32"
+          class="rounded-full shadow-md"
+        />
+        <span class="text-3xl font-bold text-green-600 dark:text-green-400">
+          Atef.
+        </span>
       </div>
-    </div>
 
-    <!-- Mobile Navigation -->
-    <div v-if="isMobileMenuOpen" class="md:hidden mt-4">
-      <div class="flex flex-row items-center space-x-4">
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-6">
         <UNavigationMenu
           :items="navItems"
+          class="text-base text-neutral-700 dark:text-neutral-300"
           variant="pill"
           highlight
-          active-class="text-sky-400"
+          active-class="text-green-500 dark:text-green-400 border-b-2 border-green-500"
         />
         <USwitch
           v-model="switchValue"
@@ -49,13 +34,49 @@
           :checked-icon="'i-lucide-sun'"
           size="xl"
           color="warning"
+          class="dark:border-neutral-700"
         />
       </div>
+
+      <!-- Mobile Menu Button -->
+      <UButton
+        @click="toggleMobileMenu"
+        class="md:hidden p-2 rounded-lg bg-neutral-300 dark:bg-neutral-600 hover:bg-neutral-300 dark:hover:bg-neutral-600"
+        color="neutral"
+      >
+        <Icon v-if="!isMobileMenuOpen" name="i-lucide-menu" size="20" />
+        <Icon v-else name="i-lucide-minimize-2" size="20" />
+      </UButton>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div
+      v-if="isMobileMenuOpen"
+      class="md:hidden mt-4 px-4 flex items-center justify-between space-x-4"
+    >
+      <!-- Navigation Links -->
+      <UNavigationMenu
+        :items="navItems"
+        variant="pill"
+        highlight
+        active-class="text-green-500 dark:text-green-400 border-b-2 border-green-500"
+        class="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-green-500 dark:hover:text-green-400"
+      />
+
+      <!-- Light/Dark Mode Switch -->
+      <USwitch
+        v-model="switchValue"
+        :unchecked-icon="'i-lucide-moon'"
+        :checked-icon="'i-lucide-sun'"
+        size="md"
+        color="warning"
+        class="dark:border-neutral-700"
+      />
     </div>
   </UContainer>
 </template>
 
-<script setup>
+<script setup lang="ts">
 // State for mobile menu
 const isMobileMenuOpen = ref(false);
 const toggleMobileMenu = () => {
