@@ -1,7 +1,7 @@
 ---
 title: Creating Polished Contact Form
 description: Explore the decisions and tools behind creating a user-friendly modal contact form with Nuxt UI.
-image: /image/building-portfolio.jpg
+image: /image/contact-form.jpeg
 author: Syed Atef Alvi
 avatar: /profile.jpeg
 date: 2025-01-03
@@ -83,6 +83,12 @@ The "Contact Me" button triggers a modal with a form. Once the form is submitted
   };
 </script>
 ```
+
+You can check out the complete implementation on my **[GitHub](https://github.com/atefalvi/v3pf/blob/master/app/components/ContactMe.vue)** under `app/components/contactme.vue` in the components folder.
+
+::callout{type="warning"}
+Validate fields effectively! Use tools like Zod for reliable and easy form validation.
+::
 
 ## The Outcome
 
