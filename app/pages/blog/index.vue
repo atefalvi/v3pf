@@ -103,7 +103,7 @@ const solidColors = [
 
 // Fetch posts
 const { data: posts } = await useAsyncData("blog-posts", () => {
-  return queryContent("/blog").find();
+  return queryContent("/blog").sort({ date: -1 }).find();
 });
 
 // Search query

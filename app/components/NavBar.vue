@@ -6,18 +6,20 @@
       class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8"
     >
       <!-- Logo and Brand Name -->
-      <div class="flex items-center space-x-2">
-        <NuxtImg
-          src="/logo4.png"
-          alt="Company Logo"
-          width="32"
-          height="32"
-          class="rounded-full shadow-md"
-        />
-        <span class="text-3xl font-bold text-green-600 dark:text-green-400">
-          Atef.
-        </span>
-      </div>
+      <NuxtLink to="/">
+        <div class="flex items-center space-x-2">
+          <NuxtImg
+            src="/logo4.png"
+            alt="Company Logo"
+            width="32"
+            height="32"
+            class="rounded-full shadow-md"
+          />
+          <span class="text-3xl font-bold text-green-600 dark:text-green-400">
+            Atef.
+          </span>
+        </div>
+      </NuxtLink>
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center space-x-6">

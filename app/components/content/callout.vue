@@ -14,11 +14,13 @@
         class="flex-1 p-3 flex items-start gap-2"
       >
         <!-- Icon -->
-        <Icon
-          :name="config.icon"
-          size="25"
-          :style="{ color: config.borderColor }"
-        />
+        <div class="flex-shrink-0 min-w-[25px]">
+          <Icon
+            :name="config.icon"
+            size="25"
+            :style="{ color: config.borderColor }"
+          />
+        </div>
         <!-- Header and Content -->
         <div>
           <p

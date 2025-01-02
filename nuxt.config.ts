@@ -34,4 +34,10 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   compatibilityDate: "2024-11-27",
+  runtimeConfig: {
+    sendgridApiKey: process.env.SENDGRID_API_KEY,
+    public: {
+      // Public variables (if needed)
+    },
+  },
 });

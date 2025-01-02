@@ -193,6 +193,18 @@ const formatDate = (dateString: string) => {
   margin-left: 0; /* No indentation */
 }
 
+/* Ordered list styles */
+.prose ol {
+  list-style-type: decimal; /* Use decimal numbers (1, 2, 3) */
+  margin-left: 1.5rem; /* Equivalent to ml-6 */
+  margin-bottom: 1.25rem; /* Equivalent to mb-5 */
+  margin-top: 1.25rem; /* Equivalent to mt-5 */
+}
+
+.prose ol li {
+  margin-bottom: 0.5rem; /* Space between list items */
+}
+
 /* Style the checkbox */
 .prose input[type="checkbox"] {
   margin-right: 0.5rem; /* Space between checkbox and text */

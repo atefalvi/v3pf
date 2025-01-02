@@ -1,7 +1,7 @@
 ---
 title: Chronicles of a Data Dreamer
 description: A humble beginning to document my journey, showcase projects, and share knowledge in the world of data engineering and web development.
-image: /image/postcover.png
+image: /image/data-dreamer.jpg
 author: Syed Atef Alvi
 avatar: /profile.jpeg
 date: 2025-01-01

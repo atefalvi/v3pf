@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "v3pf",
   "private": true,
   "type": "module",
   "scripts": {
@@ -17,11 +17,13 @@
     "@nuxt/image": "^1.8.1",
     "@nuxt/ui": "3.0.0-alpha.9",
     "@tailwindcss/typography": "^0.5.15",
+    "nodemailer": "^6.9.16",
     "nuxt": "^3.14.1592",
     "rehype-katex": "^7.0.1",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
-    "typed.js": "^2.1.0"
+    "typed.js": "^2.1.0",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@iconify-json/devicon": "^1.2.11",

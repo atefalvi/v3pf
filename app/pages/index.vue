@@ -274,15 +274,36 @@
     </UContainer>
   </section>
 
-  <!-- test code -->
-  <UContainer>
-    <section></section>
-  </UContainer>
+  <!-- Contact Me -->
+  <section class="py-12 bg-neutral-100 dark:bg-neutral-900">
+    <UContainer>
+      <section>
+        <h2
+          class="text-4xl font-bold text-neutral-800 dark:text-neutral-100 mb-8"
+        >
+          Let's Build Something Great Together!
+        </h2>
+        <p class="text-lg text-gray-600 mb-6">
+          Looking for a data analyst or a developer for your next project? Reach
+          out, and let’s make it happen!
+        </p>
+        <UButton @click="open = true">Contact Me</UButton>
+        <ContactMe v-model="open" />
+      </section>
+    </UContainer>
+  </section>
 
   <Footer />
 </template>
 
 <script setup lang="ts">
+// State for modal
+const open = ref(false);
+watch(open, (newValue) => {
+  console.log("open state:", newValue);
+});
+
+// Accordion Labels and Icons
 const items = [
   {
     label: "Engineer",
