@@ -1,7 +1,7 @@
 ---
 title: My First Blog Post
 description: This is my first blog post using Nuxt Content.
-date: 2023-10-01
+date: 2023-09-01
 image: /profile.jpeg
 tags:
   - nuxt

@@ -13,11 +13,7 @@
           <div class="flex-1 order-2 lg:order-1 text-left">
             <h1 class="text-5xl lg:text-6xl font-extrabold text-left">
               Hi! I am
-              <span
-                class="text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-green-500 to-green-300 animate-gradient"
-              >
-                Atef.
-              </span>
+              <span class="text-green-700 dark:text-green-400"> Atef. </span>
 
               <RoleTyping class="text-3xl lg:text-4xl" />
             </h1>
@@ -229,8 +225,63 @@
     </UContainer>
   </section>
 
+  <!-- Featured Blogs -->
+  <section class="py-12 bg-neutral-200 dark:bg-neutral-800">
+    <UContainer>
+      <div>
+        <h2
+          class="text-4xl font-bold text-neutral-800 dark:text-neutral-100 mb-6"
+        >
+          Featured Blogs
+        </h2>
+      </div>
+      <!-- Pull Recent 3 Blogs with Featured Tag -->
+      <div class="justify-center">
+        <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <li
+            v-for="(post, index) in featuredblog"
+            :key="post._path"
+            class="border rounded-md shadow-md relative min-h-[150px] overflow-hidden hover:border-green-500 hover:shadow-[0_0_20px_rgba(72,187,120,0.6)] transition-all duration-400"
+          >
+            <NuxtLink :to="post._path">
+              <!-- image -->
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                :style="{ 'background-image': `url(${post.image})` }"
+              ></div>
+              <!-- overlay -->
+              <div
+                class="absolute inset-0 bg-gradient-to-b from-black/80 to-transparent"
+              ></div>
+              <!-- body -->
+              <div class="relative z-10 p-3 text-white">
+                <div class="text text-xl font font-bold">{{ post.title }}</div>
+                <div class="text-shadow mb-2">
+                  {{ post.description }}
+                </div>
+                <div
+                  v-for="(tag, index) in post.tags"
+                  :key="index"
+                  class="inline-block bg-green-700 rounded-full text-xs px-2 py-1 mr-2"
+                >
+                  {{ tag }}
+                </div>
+              </div>
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+    </UContainer>
+  </section>
+
+  <!-- test code -->
+  <UContainer>
+    <section></section>
+  </UContainer>
+
   <Footer />
 </template>
+
 <script setup lang="ts">
 const items = [
   {
@@ -249,22 +300,12 @@ const items = [
     slot: "visualize",
   },
 ];
-</script>
-<style>
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradientShift 4s ease infinite;
-}
-</style>
+// Query for 3 Featured Blogs
+const featuredblog = await queryContent("blog")
+  .sort({ date: -1 })
+  .where({ tags: { $icontains: "featured" } })
+  .limit(3)
+  .find();
+console.log("Featured Blogs", featuredblog);
+</script>

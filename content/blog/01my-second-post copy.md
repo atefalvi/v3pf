@@ -1,7 +1,7 @@
 ---
 title: My Second Blog Post
 description: This is my Second blog post using Nuxt 3 and Markdown.
-date: 2023-08-01
+date: 2021-10-01
 tags:
   - nuxt
 ---

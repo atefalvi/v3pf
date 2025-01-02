@@ -1,6 +1,6 @@
 <template>
   <UContainer
-    class="sticky top-0 z-10 bg-neutral-50/70 dark:bg-neutral-800/70 backdrop-blur-lg py-4 shadow-md max-w-full"
+    class="sticky top-0 z-20 bg-neutral-50/70 dark:bg-neutral-800/70 backdrop-blur-lg py-4 shadow-md max-w-full"
   >
     <div
       class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8"
