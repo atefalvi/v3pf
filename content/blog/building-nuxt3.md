@@ -4,7 +4,7 @@ description: A concise guide on setting up a personal portfolio using Nuxt 3 and
 image: /image/building-portfolio.jpg
 author: Syed Atef Alvi
 avatar: /profile.jpeg
-date: 2025-01-01
+date: 2025-01-02
 tags:
   - nuxt3
   - portfolio

@@ -40,3 +40,8 @@ npm install @nuxt/content
 | Syntax Highlight | Code blocks with highlighting |
 
 > This is pretty interesting I would love to learn more.
+
+::callout{type="quote"}
+A great man once said: I have no clue.
+~ Syed Atef Alvi
+::
