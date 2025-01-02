@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <section class="prose">
+      <section class="prose markdown-content max-w-none">
         <ContentRenderer :value="data" />
       </section>
     </main>
@@ -98,6 +98,18 @@ const formatDate = (dateString: string) => {
   font-weight: 700; /* Bold */
   margin-bottom: 1rem; /* Equivalent to mb-4 */
   color: #34d399; /* Green-400 (Primary) */
+}
+
+/* Paragraph spacing */
+.prose p {
+  margin-bottom: 1.25rem; /* Equivalent to mb-5 */
+  margin-top: 1.25rem; /* Equivalent to mb-5 */
+}
+
+/* Ensure callout component is not affected */
+.markdown-content .callout p {
+  margin-bottom: 0; /* Reset margin for <p> tags inside callout */
+  margin-top: 0; /* Reset margin for <p> tags inside callout */
 }
 
 /* Light mode styles for code blocks */

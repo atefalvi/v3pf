@@ -1,31 +1,35 @@
 <template>
-  <div class="flex rounded-lg overflow-hidden max-w-md">
-    <!-- Left Section: Darker Strip -->
-    <div
-      :style="{ backgroundColor: config.borderColor }"
-      class="w-1 flex-shrink-0"
-    />
-    <!-- Right Section: Lighter Background -->
-    <div
-      :style="{ backgroundColor: config.bgColor }"
-      class="flex-1 p-3 flex items-start gap-2"
-    >
-      <!-- Icon -->
-      <Icon
-        :name="config.icon"
-        size="25"
-        :style="{ color: config.borderColor }"
+  <!-- Centering Container -->
+  <div class="flex justify-center">
+    <!-- Callout Component -->
+    <div class="callout flex rounded-lg overflow-hidden max-w-md w-full">
+      <!-- Left Section: Darker Strip -->
+      <div
+        :style="{ backgroundColor: config.borderColor }"
+        class="w-1 flex-shrink-0"
       />
-      <!-- Header and Content -->
-      <div>
-        <p
-          class="font-bold text-md mb-1"
+      <!-- Right Section: Lighter Background -->
+      <div
+        :style="{ backgroundColor: config.bgColor }"
+        class="flex-1 p-3 flex items-start gap-2"
+      >
+        <!-- Icon -->
+        <Icon
+          :name="config.icon"
+          size="25"
           :style="{ color: config.borderColor }"
-        >
-          {{ config.header }}
-        </p>
-        <div class="text-sm text-gray-800">
-          <slot />
+        />
+        <!-- Header and Content -->
+        <div>
+          <p
+            class="font-bold text-md mb-1"
+            :style="{ color: config.borderColor }"
+          >
+            {{ config.header }}
+          </p>
+          <div class="text-sm text-gray-800">
+            <slot />
+          </div>
         </div>
       </div>
     </div>
