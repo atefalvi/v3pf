@@ -1,4 +1,4 @@
-![Release](https://img.shields.io/github/v/release/your-username/your-repo-name?include_prereleases&style=flat-square)
+![Release](https://img.shields.io/github/v/release/atefalvi/v3pf?include_prereleases&style=flat-square)
 
 # Portfolio Website (v3)
 
