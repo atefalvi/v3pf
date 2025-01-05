@@ -30,6 +30,15 @@
           highlight
           active-class="text-green-500 dark:text-green-400 border-b-2 border-green-500"
         />
+        <UButton
+          icon="i-lucide-download"
+          to="/Syed_Atef_Alvi_Resume_2023.pdf"
+          label="Resume"
+          class="rounded-full"
+          target="_blank"
+          variant="outline"
+          size="sm"
+        />
         <USwitch
           v-model="switchValue"
           :unchecked-icon="'i-lucide-moon'"
@@ -63,6 +72,15 @@
         highlight
         active-class="text-green-500 dark:text-green-400 border-b-2 border-green-500"
         class="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-green-500 dark:hover:text-green-400"
+      />
+      <UButton
+        icon="i-lucide-download"
+        to="/Syed_Atef_Alvi_Resume_2023.pdf"
+        label="Resume"
+        class="rounded-full"
+        target="_blank"
+        variant="outline"
+        size="sm"
       />
 
       <!-- Light/Dark Mode Switch -->

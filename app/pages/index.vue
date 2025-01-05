@@ -27,9 +27,9 @@
           </div>
           <div class="p-5 flex-1 order-1 lg:order-2 flex justify-end">
             <NuxtImg
-              src="/profile.jpeg"
+              src="/herosectionprofile.png"
               alt=""
-              class="max-w-full h-auto rounded-lg shadow-lg"
+              class="max-w-full h-auto rounded-lg"
             />
           </div>
         </div>
