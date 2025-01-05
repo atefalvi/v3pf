@@ -9,6 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
+    "test": "vitest",
     "lint:fix": "eslint --fix ."
   },
   "dependencies": {
@@ -34,7 +35,12 @@
     "@iconify-json/vscode-icons": "^1.2.6",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "^0.7.2",
+    "@nuxt/test-utils": "^3.15.1",
+    "@testing-library/vue": "^8.1.0",
+    "@vitejs/plugin-vue": "^5.2.1",
     "eslint": "^9.15.0",
-    "typescript": "^5.7.2"
+    "jsdom": "^25.0.1",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   }
 }
