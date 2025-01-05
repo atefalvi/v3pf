@@ -25,6 +25,7 @@ Welcome to my portfolio website built with **Nuxt 3** and **UI v3**. This projec
   - **[Simple Icons](https://simpleicons.org/)**: SVG icons for popular brands.
   - **[VSCode Icons](https://github.com/microsoft/vscode-icons)**: Icons used in Visual Studio Code.
 - **[Vite](https://vitejs.dev/)**: Next-generation frontend tooling for fast development.
+- **[Zod](https://zod.dev/)**: A TypeScript-first schema validation library for robust form and data validation.
 
 ## 📦 Installation
 
