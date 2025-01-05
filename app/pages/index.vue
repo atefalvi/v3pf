@@ -328,5 +328,4 @@ const featuredblog = await queryContent("blog")
   .where({ tags: { $icontains: "featured" } })
   .limit(3)
   .find();
-console.log("Featured Blogs", featuredblog);
 </script>
