@@ -1,3 +1,5 @@
+![Release](https://img.shields.io/github/v/release/your-username/your-repo-name?include_prereleases&style=flat-square)
+
 # Portfolio Website (v3)
 
 Welcome to my portfolio website built with **Nuxt 3** and **UI v3**. This project is part of my journey to learn and explore modern web development. It showcases my progress, skills, and projects in a clean and responsive design.
