@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@nuxt/eslint", "@nuxt/image", "@nuxt/content"],
@@ -35,7 +36,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: "2024-11-27",
   runtimeConfig: {
-    sendgridApiKey: process.env.SENDGRID_API_KEY,
+    sendgridApiKey: process.env.NUXT_SENDGRID_API_KEY,
     public: {
       // Public variables (if needed)
     },

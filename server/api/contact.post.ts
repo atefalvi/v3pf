@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
 
   // Use environment variables
   const config = useRuntimeConfig();
+
   const sendgridApiKey = config.sendgridApiKey;
 
   // Create a Nodemailer transporter using SendGrid
