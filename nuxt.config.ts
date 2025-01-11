@@ -2,8 +2,10 @@
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  ssr: true,
   modules: ["@nuxt/ui", "@nuxt/eslint", "@nuxt/image", "@nuxt/content"],
   content: {
+    watch: true,
     highlight: {
       theme: "github-dark", // Theme for code blocks
       preload: [

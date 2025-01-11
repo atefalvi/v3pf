@@ -105,6 +105,7 @@ const solidColors = [
 const { data: posts } = await useAsyncData("blog-posts", () => {
   return queryContent("/blog").sort({ date: -1 }).find();
 });
+console.log("Posts fetched:", posts.value);
 
 // Search query
 const searchQuery = ref("");

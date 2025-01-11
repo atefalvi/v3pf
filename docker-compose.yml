@@ -2,10 +2,31 @@ version: "3.8"
 
 services:
   nuxt-app:
-    build: . # Build the Dockerfile in the current directory
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: v3pf
-    ports:
-      - "3000:3000" # Map port 3000 on the host to port 3000 in the container
     env_file:
-      - .env # Load environment variables from .env
-    restart: unless-stopped # Automatically restart the container if it stops
+      - .env
+    restart: unless-stopped
+    networks:
+      - app-network
+    volumes:
+      - ./public:/app/public
+      - ./content:/app/content
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - nuxt-app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
