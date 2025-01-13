@@ -18,15 +18,22 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.VM_HOST_KEY }}" >> ~/.ssh/known_hosts
 
+      - name: Debug current user
+        run: |
+          echo "Current user: $(whoami)"
+          echo "Home directory: $HOME"
+          echo "Working directory: $(pwd)"
+
       - name: Clean and prepare destination directory
         run: |
           echo "Cleaning old /var/www/portfolio directory..."
-          rm -rf /var/www/portfolio  # Remove the directory if it exists
-          mkdir -p /var/www/portfolio  # Recreate the directory
+          sudo rm -rf /var/www/portfolio  # Use sudo to remove the directory
+          sudo mkdir -p /var/www/portfolio  # Use sudo to create the directory
+          sudo chown -R $USER:$USER /var/www/portfolio  # Change ownership to the current user
           echo "Destination directory is ready."
 
       - name: Copy files to destination
         run: |
           echo "Copying files to /var/www/portfolio..."
-          cp -r ./* /var/www/portfolio
+          sudo cp -r ./* /var/www/portfolio
           echo "Files copied successfully."
