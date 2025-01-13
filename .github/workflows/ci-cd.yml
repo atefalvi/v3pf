@@ -18,7 +18,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.VM_HOST_KEY }}" >> ~/.ssh/known_hosts
 
-      - name: Test tar command
+      - name: Test copy command
         run: |
           echo "Testing tar command..."
-          tar -czf - . | ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} "tar -xzf - -C /var/www/portfolio && echo 'Files copied successfully' || echo 'Failed to copy files'"
+          cp -r ./* /var/www/portfolio
