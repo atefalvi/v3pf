@@ -28,6 +28,13 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} "echo 'SSH connection successful'"
 
+      - name: Verify file copying
+        run: |
+          echo "Copying files to VM..."
+          scp -r ./* ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }}:/var/www/portfolio
+          echo "Files copied successfully."
+          ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} "ls -la /var/www/portfolio"
+
       - name: Copy files to VM and deploy
         uses: appleboy/ssh-action@master
         with:
@@ -36,7 +43,7 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
             # Stop and remove existing containers
-            docker-compose -f /var/www/portfolio/docker-compose.yml down || true
+            docker compose -f /var/www/portfolio/docker-compose.yml down || true
             # Clean up old files
             rm -rf /var/www/portfolio/* || true
             mkdir -p /var/www/portfolio
@@ -46,4 +53,4 @@ jobs:
             echo "${{ secrets.ENV_FILE }}" > /var/www/portfolio/.env
             # Navigate to the portfolio directory and deploy using Docker Compose
             cd /var/www/portfolio
-            docker-compose up -d --build
+            docker compose up -d --build
