@@ -7,32 +7,16 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    run-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        use: actions/checkout@v3
 
-      - name: Copy files to VM and deploy
-        uses: appleboy/ssh-action@master
+      - name: Test SSH Connection
+        use: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USERNAME }}
           key: ${{ secrets.VM_SSH_KEY }}
-          script: |
-            # Stop and remove existing containers
-            docker-compose -f /var/www/portfolio/docker-compose.yml down || true
-
-            # Clean up old files
-            rm -rf /var/www/portfolio/* || true
-            mkdir -p /var/www/portfolio
-
-            # Copy the repository files to the VM
-            tar -czf - . | ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} "tar -xzf - -C /var/www/portfolio"
-
-            # Create the .env file from GitHub Secrets
-            echo "${{ secrets.ENV_FILE }}" > /var/www/portfolio/.env
-
-            # Navigate to the portfolio directory and deploy using Docker Compose
-            cd /var/www/portfolio
-            docker-compose up -d --build
+          script: echo "SSH Connection successful"
