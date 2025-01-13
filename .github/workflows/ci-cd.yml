@@ -50,10 +50,4 @@ jobs:
             # Clean up old files
             rm -rf /var/www/portfolio/* || true
             mkdir -p /var/www/portfolio
-            # Copy the repository files to the VM
-            scp -r ./* ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }}:/var/www/portfolio
-            # Create the .env file from GitHub Secrets
-            echo "${{ secrets.ENV_FILE }}" > /var/www/portfolio/.env
-            # Navigate to the portfolio directory and deploy using Docker Compose
-            cd /var/www/portfolio
             docker compose up -d --build
