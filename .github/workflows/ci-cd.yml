@@ -18,7 +18,15 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.VM_HOST_KEY }}" >> ~/.ssh/known_hosts
 
-      - name: Test copy command
+      - name: Clean and prepare destination directory
         run: |
-          echo "Testing tar command..."
+          echo "Cleaning old /var/www/portfolio directory..."
+          rm -rf /var/www/portfolio  # Remove the directory if it exists
+          mkdir -p /var/www/portfolio  # Recreate the directory
+          echo "Destination directory is ready."
+
+      - name: Copy files to destination
+        run: |
+          echo "Copying files to /var/www/portfolio..."
           cp -r ./* /var/www/portfolio
+          echo "Files copied successfully."
