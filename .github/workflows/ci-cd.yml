@@ -24,16 +24,15 @@ jobs:
           echo "Home directory: $HOME"
           echo "Working directory: $(pwd)"
 
-      - name: Clean and prepare destination directory
+      - name: Clean and prepare destination directory as atef
         run: |
           echo "Cleaning old /var/www/portfolio directory..."
-          sudo rm -rf /var/www/portfolio  # Use sudo to remove the directory
-          sudo mkdir -p /var/www/portfolio  # Use sudo to create the directory
-          sudo chown -R $USER:$USER /var/www/portfolio  # Change ownership to the current user
+          sudo -u atef rm -rf /var/www/portfolio  # Run as atef
+          sudo -u atef mkdir -p /var/www/portfolio  # Run as atef
           echo "Destination directory is ready."
 
-      - name: Copy files to destination
+      - name: Copy files to destination as atef
         run: |
           echo "Copying files to /var/www/portfolio..."
-          sudo cp -r ./* /var/www/portfolio
+          sudo -u atef cp -r ./* /var/www/portfolio  # Run as atef
           echo "Files copied successfully."
