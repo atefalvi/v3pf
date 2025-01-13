@@ -41,8 +41,10 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USERNAME }}
           key: ${{ secrets.VM_SSH_KEY }}
-          known_hosts: ${{ secrets.VM_HOST_KEY }}
           script: |
+            # Add the host key to known_hosts
+            mkdir -p ~/.ssh
+            echo "${{ secrets.VM_HOST_KEY }}" >> ~/.ssh/known_hosts
             # Stop and remove existing containers
             docker compose -f /var/www/portfolio/docker-compose.yml down || true
             # Clean up old files
