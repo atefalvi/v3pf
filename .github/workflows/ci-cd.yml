@@ -15,17 +15,16 @@ jobs:
         uses: actions/checkout@v3
 
       # Step 2: Copy files to VM and deploy
-      - name: Copy files to VM
+      - name: Test tar command
+        run: |
+          echo "Testing tar command..."
+          tar -czf - . | ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} "tar -xzf - -C /var/www/portfolio && echo 'Files copied successfully' || echo 'Failed to copy files'"
+
+      - name: Verify files on VM
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USERNAME }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            # Clean up old files
-            rm -rf /var/www/portfolio/* || true
-            mkdir -p /var/www/portfolio
-            # Copy the repository files to the VM
-            tar -czf - . | ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} "tar -xzf - -C /var/www/portfolio"
-            # Verify files were copied
             ls -la /var/www/portfolio
