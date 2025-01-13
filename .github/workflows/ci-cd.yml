@@ -26,11 +26,29 @@ jobs:
             # Navigate to project directory
             cd /var/www/portfolio
             
+            # Debug: List directory contents before cleanup
+            echo "Directory contents before cleanup:"
+            ls -la
+            
             # Stop existing containers
             docker compose down || true
             
             # Clean up old files
-            rm -rf ./* || true
+            rm -rf ./* .git || true  # Remove all files and the .git directory
+            
+            # Debug: List directory contents after cleanup
+            echo "Directory contents after cleanup:"
+            ls -la
+            
+            # Clone the repository
+            git clone https://github.com/atefalvi/v3pf.git .
+            
+            # Debug: List directory contents after cloning
+            echo "Directory contents after cloning:"
+            ls -la
+            
+            # Build and start containers
+            docker compose up -d --build
             
             # Clone the repository
             git clone https://github.com/atefalvi/v3pf.git .
