@@ -10,21 +10,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Copy files to VM and deploy
-      - name: Test tar command
+      - name: Add VM host key to known_hosts
         run: |
-          echo "Testing tar command..."
-          tar -czf - . | ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} "tar -xzf - -C /var/www/portfolio && echo 'Files copied successfully' || echo 'Failed to copy files'"
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VM_HOST_KEY }}" >> ~/.ssh/known_hosts
 
-      - name: Verify files on VM
+      - name: Copy files to VM and deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USERNAME }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            ls -la /var/www/portfolio
+            # Stop and remove existing containers
+            docker compose -f /var/www/portfolio/docker-compose.yml down || true
+            # Clean up old files
+            rm -rf /var/www/portfolio/* || true
+            mkdir -p /var/www/portfolio
+            # Copy the repository files to the VM
+            tar -czf - . | ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} "tar -xzf - -C /var/www/portfolio"
+            # Create the .env file from GitHub Secrets
+            echo "${{ secrets.ENV_FILE }}" > /var/www/portfolio/.env
+            # Navigate to the portfolio directory and deploy using Docker Compose
+            cd /var/www/portfolio
+            docker compose up -d --build
