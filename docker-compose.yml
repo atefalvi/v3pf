@@ -8,23 +8,14 @@ services:
       - .env
     restart: unless-stopped
     networks:
-      - app-network
+      - traefik-network
     volumes:
       - ./public:/app/public
       - ./content:/app/content
 
-  nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
-    container_name: nginx
-    ports:
-      - "80:80"
-    depends_on:
-      - nuxt-app
-    networks:
-      - app-network
-
 networks:
-  app-network:
-    driver: bridge
+  traefik-network:
+
+volumes:
+  public_volume:
+  content_volume:

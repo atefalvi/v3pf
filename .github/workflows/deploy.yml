@@ -1,0 +1,45 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to VM
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USERNAME }}
+          port: ${{ secrets.VM_PORT_EXT }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            # Create directory (best practice: use /srv)
+            sudo mkdir -p /srv/portfolio
+            sudo chown -R gitdeployer:gitdeployer /srv/portfolio
+
+            # Navigate to directory
+            cd /srv/portfolio
+
+            # Clone/pull code securely
+            if [ -d .git ]; then
+              git pull origin master
+            else
+              git clone https://github.com/atefalvi/v3pf.git .
+            fi
+
+            # Write .env securely (no echo)
+            echo "${{ secrets.ENV_FILE }}" | base64 --decode > .env
+
+            # Rebuild containers with cache optimization
+            docker compose down
+            docker compose build --pull
+            docker compose up -d --force-recreate
+
+            # Cleanup unused Docker artifacts
+            docker system prune -f
