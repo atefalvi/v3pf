@@ -19,27 +19,52 @@ jobs:
           port: ${{ secrets.VM_PORT_EXT }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            # Create directory (best practice: use /srv)
+            # Enable verbose logging
+            set -x
+
+            # --- Directory Setup ---
+            echo "=== Setting up directory ==="
             sudo mkdir -p /srv/portfolio
             sudo chown -R gitdeployer:gitdeployer /srv/portfolio
+            ls -ld /srv/portfolio  # Verify ownership
 
-            # Navigate to directory
+            # --- Navigate to Directory ---
+            echo "=== Moving to project directory ==="
             cd /srv/portfolio
+            pwd  # Confirm working directory
 
-            # Clone/pull code securely
+            # --- Clone/Pull Repository ---
+            echo "=== Updating repository ==="
             if [ -d .git ]; then
+              echo "Pulling latest changes..."
               git pull origin master
             else
+              echo "Cloning repository..."
               git clone https://github.com/atefalvi/v3pf.git .
             fi
+            git log -1 --oneline  # Show latest commit
 
-            # Write .env securely (no echo)
-            echo "${{ secrets.ENV_FILE }}" | base64 --decode > .env
+            # --- Environment File Setup ---
+            echo "=== Writing .env file ==="
+            echo "${{ secrets.ENV_FILE }}" | base64 --decode > .env  # Use base64 decode
+            ls -la .env  # Verify file exists
+            head -n 3 .env  # Preview first 3 lines (no secrets leaked)
 
-            # Rebuild containers with cache optimization
-            docker compose down
-            docker compose build --pull
+            # --- Docker Operations ---
+            echo "=== Rebuilding Docker containers ==="
+            echo "Stopping existing containers..."
+            docker compose down || echo "No containers to stop."
+
+            echo "Building containers..."
+            docker compose build --pull --no-cache
+
+            echo "Starting containers..."
             docker compose up -d --force-recreate
 
-            # Cleanup unused Docker artifacts
+            echo "=== Container Status ==="
+            docker ps -a  # Show all containers (running/exited)
+
+            # --- Cleanup ---
+            echo "=== Cleaning up Docker artifacts ==="
             docker system prune -f
+            echo "Deployment completed!"
