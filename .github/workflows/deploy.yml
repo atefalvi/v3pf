@@ -20,7 +20,6 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
             # Enable verbose logging
-            set -x
 
             # --- Directory Setup ---
             echo "=== Setting up directory ==="
@@ -46,7 +45,7 @@ jobs:
 
             # --- Environment File Setup ---
             echo "=== Writing .env file ==="
-            echo "${{ secrets.ENV_FILE }}" | base64 --decode > .env  # Use base64 decode
+            echo "${{ secrets.ENV_FILE }}" > .env  # Use base64 decode
             ls -la .env  # Verify file exists
             head -n 3 .env  # Preview first 3 lines (no secrets leaked)
 
