@@ -19,8 +19,6 @@ jobs:
           port: ${{ secrets.VM_PORT_EXT }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            # Enable verbose logging
-
             # --- Directory Setup ---
             echo "=== Setting up directory ==="
             sudo mkdir -p /srv/portfolio

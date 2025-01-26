@@ -4,18 +4,13 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: v3pf
+    ports:
+      - "3000:3000"
     env_file:
       - .env
     restart: unless-stopped
     networks:
       - traefik-network
-    volumes:
-      - ./public:/app/public
-      - ./content:/app/content
 
 networks:
   traefik-network:
-
-volumes:
-  public_volume:
-  content_volume:
