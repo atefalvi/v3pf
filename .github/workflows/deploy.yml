@@ -21,8 +21,8 @@ jobs:
           script: |
             # --- Directory Setup ---
             echo "=== Setting up directory ==="
-            sudo mkdir -p /srv/portfolio
-            sudo chown -R gitdeployer:gitdeployer /srv/portfolio
+            mkdir -p /srv/portfolio
+            chown -R gitdeployer:gitdeployer /srv/portfolio
             ls -ld /srv/portfolio  # Verify ownership
 
             # --- Navigate to Directory ---
@@ -30,16 +30,27 @@ jobs:
             cd /srv/portfolio
             pwd  # Confirm working directory
 
-            # --- Clone/Pull Repository ---
-            echo "=== Updating repository ==="
-            if [ -d .git ]; then
-              echo "Pulling latest changes..."
-              git pull origin master
-            else
-              echo "Cloning repository..."
-              git clone https://github.com/atefalvi/v3pf.git .
-            fi
-            git log -1 --oneline  # Show latest commit
+            # --- Clean Workspace ---
+            echo "=== Cleaning workspace ==="
+            cd /srv/portfolio
+            git clean -f -d  # Remove untracked files/dirs
+            git restore .    # Discard tracked file changes
+
+            # --- Update Repository ---
+            echo "=== Fetching updates ==="
+            git fetch origin master
+            git reset --hard origin/master
+
+            # --- Clean Install & Build ---
+            echo "=== Fresh Build ==="
+            docker compose down
+            docker system prune -af
+            docker compose build --no-cache --pull
+            docker compose up -d
+
+            echo "=== Final Status ==="
+            git log -1 --oneline
+            docker ps -a
 
             # --- Environment File Setup ---
             echo "=== Writing .env file ==="
