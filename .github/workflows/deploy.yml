@@ -18,7 +18,6 @@ jobs:
           username: ${{ secrets.VM_USERNAME }}
           port: ${{ secrets.VM_PORT_EXT }}
           key: ${{ secrets.VM_SSH_KEY }}
-          timeout: 800
           script: |
             echo "=== Moving to /srv/portfolio ==="
             mkdir -p /srv/portfolio
