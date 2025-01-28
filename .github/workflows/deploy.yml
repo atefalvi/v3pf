@@ -20,32 +20,11 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           timeout: 800
           script: |
-name: CI/CD Pipeline
-
-on:
-  push:
-    branches: [master]
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Deploy to VM
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.VM_HOST }}
-          username: ${{ secrets.VM_USERNAME }}
-          port: ${{ secrets.VM_PORT_EXT }}
-          key: ${{ secrets.VM_SSH_KEY }}
-          timeout: 800
-          script: |
             echo "=== Moving to /srv/portfolio ==="
             mkdir -p /srv/portfolio
             chown -R gitdeployer:gitdeployer /srv/portfolio
             cd /srv/portfolio
+
             echo "=== Confirm location ==="
             pwd
 
@@ -55,6 +34,7 @@ jobs:
 
             echo "=== Writing .env file ==="
             echo "${{ secrets.ENV_FILE }}" > .env
+            # If your docker-compose.yml references .env, it’s ready.
 
             echo "=== Stopping running containers (if any) ==="
             docker compose down || echo "No containers to stop."
