@@ -13,7 +13,7 @@ services:
       - traefik-network
     labels:
       - traefik.enable=true
-      - traefik.http.routers.nuxt-app.rule=HostRegexp(`^.+\.data-dreamer\.net$`)
+      - traefik.http.routers.nuxt-app.rule=HostRegexp(`^((.*)\.)?data-dreamer\.net$`)
       - traefik.http.routers.nuxt-app.entrypoints=websecure
       - traefik.http.routers.nuxt-app.tls.certresolver=cloudflare
       - traefik.http.middlewares.redirect.redirectscheme.scheme=https
