@@ -18,61 +18,52 @@ jobs:
           username: ${{ secrets.VM_USERNAME }}
           port: ${{ secrets.VM_PORT_EXT }}
           key: ${{ secrets.VM_SSH_KEY }}
+          timeout: 800
           script: |
-            # --- Directory Setup ---
-            echo "=== Setting up directory ==="
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to VM
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USERNAME }}
+          port: ${{ secrets.VM_PORT_EXT }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          timeout: 800
+          script: |
+            echo "=== Moving to /srv/portfolio ==="
             mkdir -p /srv/portfolio
             chown -R gitdeployer:gitdeployer /srv/portfolio
-            ls -ld /srv/portfolio  # Verify ownership
-
-            # --- Navigate to Directory ---
-            echo "=== Moving to project directory ==="
             cd /srv/portfolio
-            pwd  # Confirm working directory
+            echo "=== Confirm location ==="
+            pwd
 
-            # --- Clean Workspace ---
-            echo "=== Cleaning workspace ==="
-            cd /srv/portfolio
-            git clean -f -d  # Remove untracked files/dirs
-            git restore .    # Discard tracked file changes
-
-            # --- Update Repository ---
-            echo "=== Fetching updates ==="
+            echo "=== Fetching latest code ==="
             git fetch origin master
             git reset --hard origin/master
 
-            # --- Clean Install & Build ---
-            echo "=== Fresh Build ==="
-            docker compose down
-            docker system prune -af
-            docker compose build --no-cache --pull
-            docker compose up -d
-
-            echo "=== Final Status ==="
-            git log -1 --oneline
-            docker ps -a
-
-            # --- Environment File Setup ---
             echo "=== Writing .env file ==="
-            echo "${{ secrets.ENV_FILE }}" > .env  # Use base64 decode
-            ls -la .env  # Verify file exists
-            head -n 3 .env  # Preview first 3 lines (no secrets leaked)
+            echo "${{ secrets.ENV_FILE }}" > .env
 
-            # --- Docker Operations ---
-            echo "=== Rebuilding Docker containers ==="
-            echo "Stopping existing containers..."
+            echo "=== Stopping running containers (if any) ==="
             docker compose down || echo "No containers to stop."
 
-            echo "Building containers..."
-            docker compose build --pull --no-cache
-
-            echo "Starting containers..."
+            echo "=== Building and starting containers ==="
+            # Use cached layers to speed things up:
+            docker compose build --pull
             docker compose up -d --force-recreate
 
-            echo "=== Container Status ==="
-            docker ps -a  # Show all containers (running/exited)
-
-            # --- Cleanup ---
-            echo "=== Cleaning up Docker artifacts ==="
-            docker system prune -f
-            echo "Deployment completed!"
+            echo "=== Checking final status ==="
+            docker ps -a
+            echo "Deployment Completed!"
