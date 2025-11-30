@@ -4,21 +4,4 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: v3pf
-    ports:
-      - "3000:3000"
-    env_file:
-      - .env
     restart: unless-stopped
-    networks:
-      - traefik-network
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.nuxt-app.rule=Host(`data-dreamer.net`,`www.data-dreamer.net`)
-      - traefik.http.routers.nuxt-app.entrypoints=websecure
-      - traefik.http.routers.nuxt-app.tls.certresolver=cloudflare
-      - traefik.http.middlewares.redirect.redirectscheme.scheme=https
-      - traefik.http.routers.nuxt-app.middlewares=redirect
-
-networks:
-  traefik-network:
-    external: true
